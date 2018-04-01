@@ -12,9 +12,9 @@ from django.db.models import (
 
 class AnimeCatalog(models.Model):
     anime_id = UUIDField(primary_key = True, default=uuid.uuid4, editable=False)
-    name = CharField(max_length=100)
-    Genre = CharField(max_length=300)
-    type_Anime = CharField(max_length = 10)
+    name = CharField(max_length=300)
+    genre = CharField(max_length=300)
+    typeanime = CharField(max_length = 10)
     rating = DecimalField(max_digits = 4, decimal_places = 2)
     members = IntegerField()
     anime_cover = ImageField(blank = True, null = True, upload_to = "img/animeCover", verbose_name = "Profile Photo")

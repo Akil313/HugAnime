@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/adminuser/Desktop/Assignment3/HugAnime/venv"
+set -gx VIRTUAL_ENV "/home/adminuser/Documents/INFO2602/As3/animeManager/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

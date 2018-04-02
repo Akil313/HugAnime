@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Assignment 3 Authentication</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <!-- Sign In Button Modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalWindow">Sign In</button>
+
+    <div class="container">
+        <div class="modal fade animate" id="modalWindow" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modalContent">
+            
+            <div class="row">
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm-9">
+                    <div class="modal-header">
+                            <div class="imgcontainer">
+                            <h4 class="modalLightFont" style="text-align:center">Welcome back to HugAnime!</h4>
+                            <img src="hugAnimeLogoYellow.png" class="modalLogo">
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="closeButton">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="modalLightFont" >Email address</label>
+                        <input type="email" class="form-control" id="emailInput" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label class= "modalLightFont">Password</label>
+                        <input type="password" class="form-control" id="passwordInput" aria-describedby="passwordHelp" placeholder="Password">
+                        <small id="passwordHelp" class="form-text text-muted"><a class="linkFont" href="#">Forgot Password ?</a></small>
+                    </div>
+                    <button type="submit" class="btn btn-primary gradient form-control" id="loginButton">Login</button>
+                    <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="modalLightFont form-check-label">Remember me</label>
+                    </div>
+                </form>
+            </div> 
+
+            <div class="modal-footer modalLightFont">
+                <div>
+                    Don't have an account? <a class= "linkFont" href="#"> Register Here</a>
+                </div>
+            </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Register Button Modal -->
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalWindowRegister">Register</button>
+
+    <div class="container">
+        <div class="modal fade animate" id="modalWindowRegister" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modalContent">
+            
+            <div class="row">
+                <div class="col-sm-2">
+
+                </div>
+                <div class="col-sm-9">
+                    <div class="modal-header">
+                            <div class="imgcontainer">
+                            <h4 class="modalLightFont" style="text-align:center">Create an account</h4>
+                            <img src="hugAnimeLogoYellow.png" class="modalLogo">
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="closeButton">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="modalLightFont" >Email address</label>
+                        <input type="email" class="form-control" id="emailInput" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label class="modalLightFont" >Username</label>
+                        <input type="username" class="form-control" id="usernameInput" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label class= "modalLightFont">Password</label>
+                        <input type="password" class="form-control" id="passwordInput" aria-describedby="passwordHelp" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary gradient form-control" id="loginButton">Register</button>
+                    <div class="modalLightFont" style="text-align:left">
+                        <small>By registering, you agree to HugAnime's Terms of Service and Privacy Policy</small>
+                    </div>
+                </form>
+            </div> 
+
+            <div class="modal-footer modalLightFont">
+                <div style="text-align:right">
+                    Already have an account? <a class= "linkFont" href="#"> Login Here</a>
+                </div>
+            </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+body{
+    background: url(bg5.jpg);
+    background-size: cover;
+
+}
+
+.modalContent{
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color:rgba(0, 0, 0, 0.795);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.8rem;
+    outline: 0;
+  }
+  
+.modalLightFont{
+    color: #fff;
+}
+
+.imgcontainer {
+    text-align: center;
+    position: relative;
+}
+.modalLogo {
+    width: 75%;
+	height:75%;
+}
+
+#emailInput{
+    background-color: rgba(0, 0, 0, 0.795);
+}
+
+/* #emailInput::-webkit-input-placeholder {
+    color: #856e07;
+    opacity: 1;
+  }
+  
+  #emailInput::-moz-placeholder {
+    color: #856e07;
+    opacity: 1;
+  }
+  
+  #emailInput:-ms-input-placeholder {
+    color: #856e07;
+    opacity: 1;
+  }
+  
+  #emailInput::-ms-input-placeholder {
+    color: #856e07;
+    opacity: 1;
+  }
+  
+  #emailInput::placeholder {
+    color: #856e07;
+    opacity: 1;
+  } */
+
+#emailInput:focus {
+    color: #e0ba0c;
+    background-color: rgba(0, 0, 0, 0.795);
+    border-color: #ecff80;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(255, 251, 0, 0.25);
+  }
+
+#passwordInput{
+    color: #e0ba0c;
+    background-color: rgba(0, 0, 0, 0.795);
+}
+
+#usernameInput{
+    background-color: rgba(0, 0, 0, 0.795);
+}
+
+#usernameInput:focus {
+    color: #e0ba0c;
+    background-color: rgba(0, 0, 0, 0.795);
+    border-color: #ecff80;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(255, 251, 0, 0.25);
+  }
+
+/* #passwordInput::-webkit-input-placeholder {
+    color: #856e07;
+    opacity: 1;
+  }
+  
+  #passwordInput::-moz-placeholder {
+    color: #856e07;
+    opacity: 1;
+  }
+  
+  #passwordInput:-ms-input-placeholder {
+    color: #856e07;
+    opacity: 1;
+  }
+  
+  #passwordInput::-ms-input-placeholder {
+    color: #856e07;
+    opacity: 1;
+  }
+  
+  #passwordInput::placeholder {
+    color: #856e07;
+    opacity: 1;
+  } */
+
+  #passwordInput:focus {
+    color: #e0ba0c;
+    background-color: rgba(0, 0, 0, 0.795);
+    border-color: #ecff80;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(255, 251, 0, 0.25);
+  }
+
+.closeButton{
+    text-align: right;
+    padding-top: 5px;
+    padding-right: 10px;
+}
+
+modalFooter{
+    float: right;
+}
+
+.animate {
+    animation: zoom 0.6s
+}
+@keyframes zoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+
+.linkFont{
+    color: rgb(175, 24, 19);
+}
+
+.btn-primary.gradient {
+	background: -moz-linear-gradient(top,  #776b48 50%, #6e6037 50%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#776b48), color-stop(50%,#6e6037)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #776b48 50%,#6e6037 50%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #776b48 50%,#6e6037 50%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #776b48 50%,#6e6037 50%); /* IE10+ */
+	background: linear-gradient(to bottom,  #776b48 50%,#6e6037 50%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#776b48', endColorstr='#6e6037',GradientType=0 ); /* IE6-9 */
+}
+
+.btn-primary.gradient:hover, .btn-primary.gradient:focus, .btn-primary.gradient:active, .btn-primary.gradient.active, .open > .dropdown-toggle.btn-primary {
+	background: -moz-linear-gradient(top,  #7c7357 50%, #776b48 50%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#7c7357), color-stop(50%,#776b48)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #7c7357 50%,#776b48 50%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #7c7357 50%,#776b48 50%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #7c7357 50%,#776b48 50%); /* IE10+ */
+	background: linear-gradient(to bottom,  #7c7357 50%,#776b48 50%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c7357', endColorstr='#776b48',GradientType=0 ); /* IE6-9 */
+}
+
+.btn-primary.gradient:active, .btn-primary.gradient.active {
+	background: -moz-linear-gradient(top,  #6e6037 50%, #5a4e2b 50%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#6e6037), color-stop(50%,#5a4e2b)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #6e6037 50%,#5a4e2b 50%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #6e6037 50%,#5a4e2b 50%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #6e6037 50%,#5a4e2b 50%); /* IE10+ */
+	background: linear-gradient(to bottom,  #6e6037 50%,#5a4e2b 50%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6e6037', endColorstr='#5a4e2b',GradientType=0 ); /* IE6-9 */
+}
+
+.btn:focus, .btn.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem, #6e6037d3;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-color: #5a4e2b;
+    border-color: #5a4e2b;
+  }
+
+  .btn-primary:hover {
+    color: #fff;
+    background-color: #5a4e2b;
+    border-color: #6e6037;
+  }
+
+  .btn-primary:focus, .btn-primary.focus {
+    box-shadow: 0 0 0 0.2rem, #6e6037d3;
+  }
+
+  .btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #5a4e2b;
+    border-color: #6e6037;
+  }
+
+  .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #5a4e2b;
+  border-color: #6e6037;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem, #6e6037d3;
+}

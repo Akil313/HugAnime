@@ -2,6 +2,11 @@ body{
     background-color: rgb(24,23,21);
     color: white;
 }
-.col-sm{
+
+.container{
+    border: 1px solid red;
+}
+
+.col-md{
     text-align: center;
 }

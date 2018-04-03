@@ -19,18 +19,18 @@ def home(request):
         for line in csvReader:
             temp.append(line['name'])
             tempID.append(line['anime_id'])
-        '''
-        for x in range(len(temp)):
+
+        for x in range(0,len(temp)):
             pics.append(findAnimePic(tempID[x],temp[x]))
-        '''
+
         for x in range(0, len(temp), 5):
             for y in range (5):
                 if not(x+y >= len(temp)):
-                    fiveNames.append(temp[x+y])
+                    fiveNames.append({'name':temp[x+y],'img':pics[x+y]})
             names.append(fiveNames)
             fiveNames = []
-
-        html = render(request, 'home/home.html', {'names': names})
+        #items = {'names': names, 'imgs': pics}
+        html = render(request, 'home/home.html', {'names':names})
     return html
 
 def login(request):

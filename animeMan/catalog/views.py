@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from .forms import AnimeCatalogForm
 from .models import AnimeCatalog
+from .WebScraping import findAnimePic
 import csv
 
 # Create your views here.
@@ -10,11 +11,16 @@ def home(request):
     with open('../anime.csv', 'r') as aFile:
         csvReader = csv.DictReader(aFile)
         temp = []
+        tempID = []
         fiveNames = []
         names = []
 
         for line in csvReader:
             temp.append(line['name'])
+            tempID.append(line['anime_id'])
+
+        for x in range(len(temp)):
+            print(findAnimePic(tempID[x],temp[x]))
 
         for x in range(0, len(temp), 5):
             for y in range (5):

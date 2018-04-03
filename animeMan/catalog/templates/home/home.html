@@ -137,10 +137,11 @@
 
     {% for rowNames in names %}
         <div class="container">
-              <div class="row">
+              <div class="row">              
                 {% for name in rowNames %}
                     <div class="col-md">
-                        {{name}}
+                        {{name.name}}
+                        <img src="{{name.img}}" alt="{{name.name}}">
                     </div>
                 {% endfor %}
             </div>

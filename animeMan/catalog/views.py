@@ -12,16 +12,17 @@ def home(request):
         csvReader = csv.DictReader(aFile)
         temp = []
         tempID = []
+        pics = []
         fiveNames = []
         names = []
 
         for line in csvReader:
             temp.append(line['name'])
             tempID.append(line['anime_id'])
-
+        '''
         for x in range(len(temp)):
-            print(findAnimePic(tempID[x],temp[x]))
-
+            pics.append(findAnimePic(tempID[x],temp[x]))
+        '''
         for x in range(0, len(temp), 5):
             for y in range (5):
                 if not(x+y >= len(temp)):

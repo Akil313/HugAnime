@@ -7,7 +7,7 @@ from .WebScraping import findAnimePic
 import csv
 
 # Create your views here.
-def index(request):
+def home(request):
     with open('../anime.csv', 'r') as aFile:
         csvReader = csv.DictReader(aFile)
         temp = []
@@ -32,6 +32,9 @@ def index(request):
 
         html = render(request, 'home/home.html', {'names': names})
     return html
+
+def login(request):
+    return render(request, 'login/authentication.html')
 
 class form(View):
     def get(self, request):

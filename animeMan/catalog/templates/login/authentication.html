@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    {% load staticfiles %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Assignment 3 Authentication</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
@@ -29,7 +30,7 @@
                     <div class="modal-header">
                             <div class="imgcontainer">
                             <h4 class="modalLightFont" style="text-align:center">Welcome back to HugAnime!</h4>
-                            <img src="hugAnimeLogoYellow.png" class="modalLogo">
+                            <img src="{% static 'img/hugAnimeLogoYellow.png' %}" class="modalLogo">
                             </div>
                     </div>
                 </div>
@@ -90,7 +91,7 @@
                     <div class="modal-header">
                             <div class="imgcontainer">
                             <h4 class="modalLightFont" style="text-align:center">Create an account</h4>
-                            <img src="hugAnimeLogoYellow.png" class="modalLogo">
+                            <img src="{% static 'img/hugAnimeLogoYellow.png' %}" class="modalLogo">
                             </div>
                     </div>
                 </div>

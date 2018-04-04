@@ -20,13 +20,13 @@ def home(request):
             temp.append(line['name'])
             tempID.append(line['anime_id'])
 
-        for x in range(0,len(temp)):
+        for x in range(0,5):
             pics.append(findAnimePic(tempID[x],temp[x]))
 
         for x in range(0, len(temp), 5):
             for y in range (5):
                 if not(x+y >= len(temp)):
-                    fiveNames.append({'name':temp[x+y],'img':pics[x+y]})
+                    fiveNames.append({'name':temp[x+y],'img':pics[y]})
             names.append(fiveNames)
             fiveNames = []
         #items = {'names': names, 'imgs': pics}

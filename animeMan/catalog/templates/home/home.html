@@ -138,10 +138,10 @@
     {% for rowNames in names %}
         <div class="container">
               <div class="row">              
-                {% for name in rowNames %}
+                {% for anime in rowNames %}
                     <div class="col-md">
-                        {{name.name}}
-                        <img src="{{name.img}}" alt="{{name.name}}">
+                        {{anime.name}}
+                        <img src="{{anime.img}}" alt="{{anime.name}}">
                     </div>
                 {% endfor %}
             </div>

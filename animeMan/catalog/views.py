@@ -5,32 +5,33 @@ from .forms import AnimeCatalogForm
 from .models import AnimeCatalog
 from .WebScraping import findAnimePic
 import csv
+from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
-    with open('../anime.csv', 'r') as aFile:
-        csvReader = csv.DictReader(aFile)
-        temp = []
-        tempID = []
-        pics = []
+    temp = []
+    tempID = []
+    pics = []
+    fiveNames = []
+    names = []
+
+    new = AnimeCatalog.objects.all()
+
+    for line in new:
+        temp.append(line['name'].replace('&#039;', ''))
+        tempID.append(line['anime_id'])
+
+    for x in range(0,5):
+        pics.append(findAnimePic(tempID[x],temp[x]))
+
+    for x in range(0, len(temp), 5):
+        for y in range (5):
+            if not(x+y >= len(temp)):
+                fiveNames.append({'name':temp[x+y],'img':pics[y]})
+        names.append(fiveNames)
         fiveNames = []
-        names = []
-
-        for line in csvReader:
-            temp.append(line['name'].replace('&#039;', ''))
-            tempID.append(line['anime_id'])
-
-        for x in range(0,5):
-            pics.append(findAnimePic(tempID[x],temp[x]))
-
-        for x in range(0, len(temp), 5):
-            for y in range (5):
-                if not(x+y >= len(temp)):
-                    fiveNames.append({'name':temp[x+y],'img':pics[y]})
-            names.append(fiveNames)
-            fiveNames = []
-        #items = {'names': names, 'imgs': pics}
-        html = render(request, 'home/home.html', {'names':names})
+    items = {'names': names, 'imgs': pics}
+    html = render(request, 'home/home.html', {'names':names})
     return html
 
 def login(request):

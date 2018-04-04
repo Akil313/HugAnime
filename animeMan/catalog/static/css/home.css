@@ -3,12 +3,11 @@ body{
     color: white;
 }
 
-.container{
-    border: 1px solid red;
+button{
+  position: sticky;
 }
 
-
-.col-md{
+.col-sm{
     text-align: center;
 }
 

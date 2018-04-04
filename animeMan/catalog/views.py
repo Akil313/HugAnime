@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from .forms import AnimeCatalogForm
-from .models import AnimeCatalog
+from .models import AnimeCatalog, AnimeCatalogNew
 from .WebScraping import findAnimePic
 import csv
 from django.core.paginator import Paginator
@@ -15,22 +15,22 @@ def home(request):
     fiveNames = []
     names = []
 
-    new = AnimeCatalog.objects.all()
+    new = AnimeCatalog.objects.values()
 
-    for line in new:
+    for line in new: 
         temp.append(line['name'].replace('&#039;', ''))
         tempID.append(line['anime_id'])
 
-    for x in range(0,5):
+    for x in range(0,10):
         pics.append(findAnimePic(tempID[x],temp[x]))
 
-    for x in range(0, len(temp), 5):
+    for x in range(0, 10, 5):
         for y in range (5):
             if not(x+y >= len(temp)):
-                fiveNames.append({'name':temp[x+y],'img':pics[y]})
+                fiveNames.append({'name':temp[x+y],'img':pics[x+y]})
         names.append(fiveNames)
         fiveNames = []
-    items = {'names': names, 'imgs': pics}
+    # items = {'names': names, 'imgs': pics}
     html = render(request, 'home/home.html', {'names':names})
     return html
 

@@ -53,6 +53,7 @@ class form(View):
                 anime.name = animeCatForm.cleaned_data['name']
                 anime.genre =  animeCatForm.cleaned_data['genre']
                 anime.typeanime =  animeCatForm.cleaned_data['typeanime']
+                anime.episodes =  animeCatForm.cleaned_data['episodes']
                 anime.rating =  animeCatForm.cleaned_data['rating']
                 anime.members =  animeCatForm.cleaned_data['members']
                 anime.anime_cover =  animeCatForm.cleaned_data['anime_cover']

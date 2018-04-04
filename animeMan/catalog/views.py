@@ -17,7 +17,7 @@ def home(request):
         names = []
 
         for line in csvReader:
-            temp.append(line['name'])
+            temp.append(line['name'].replace('&#039;', ''))
             tempID.append(line['anime_id'])
 
         for x in range(0,5):

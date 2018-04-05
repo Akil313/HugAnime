@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from .forms import AnimeCatalogForm
-from .models import AnimeCatalog, AnimeCatalogNew
+from .models import AnimeCatalog
 from .WebScraping import findAnimePic
 import csv
 from django.core.paginator import Paginator
@@ -19,10 +19,7 @@ def home(request):
 
     for line in new: 
         temp.append(line['name'].replace('&#039;', ''))
-        tempID.append(line['anime_id'])
-
-    for x in range(0,10):
-        pics.append(findAnimePic(tempID[x],temp[x]))
+        pics.append(line['anime_url'])
 
     for x in range(0, 10, 5):
         for y in range (5):
@@ -57,7 +54,7 @@ class form(View):
                 anime.episodes =  animeCatForm.cleaned_data['episodes']
                 anime.rating =  animeCatForm.cleaned_data['rating']
                 anime.members =  animeCatForm.cleaned_data['members']
-                anime.anime_cover =  animeCatForm.cleaned_data['anime_cover']
+                anime.anime_url =  animeCatForm.cleaned_data['anime_url']
                 animeCatForm.save()
                 return HttpResponseRedirect("/?openr=cat&res=true")
         return render(request, 'catalogs/add.html', {

@@ -13,3 +13,5 @@ def findAnimePic(animeID,animeName):
             if animeName in link.get("alt"):
                 img = link.get("src")
                 return link.get("src")
+
+print (findAnimePic('1', 'Cowboy Bebop'))

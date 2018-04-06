@@ -1,7 +1,52 @@
 body{
-    background: url(../img/bg5.jpg);
+    background: url(../img/large.gif);
     background-size: cover;
+    
+}
+p{
+  width: 120px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.849);
+  border-color: rgba(255, 255, 255, 0.849);
+  
+  margin: 0 auto;
+}
 
+#mockp1{
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;
+}
+
+#mockp2{
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  }
+
+#mockp1{
+  margin-top: 190px; 
+  margin-bottom: 0px;
+}
+
+#mockp1,#mockp2{
+  border:10px;
+  text-align: center;
+}
+
+#signIn{
+  margin-top:5px;
+}
+#signIn, #register{
+  color: black;
+  background-color: goldenrod;
+  border-color: black;
+  /* margin: 0 auto; */
+}
+
+#signIn:hover,#register:hover{
+  color: white;
+  background-color: rgb(212, 24, 128);
+  border-color: white;
+  /* margin: 0 auto; */
 }
 
 .modalContent{
@@ -180,11 +225,13 @@ modalFooter{
     box-shadow: 0 0 0 0.2rem, #6e6037d3;
   }
 
-  .btn-primary {
+  /* .btn-primary {
     color: #fff;
     background-color: #5a4e2b;
     border-color: #5a4e2b;
-  }
+  } */
+
+ 
 
   .btn-primary:hover {
     color: #fff;

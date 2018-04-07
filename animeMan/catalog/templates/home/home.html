@@ -139,9 +139,36 @@
         <div class="container-fluid">
               <div class="row"> 
                 {% for anime in rowNames %}
+                <a href="#myModal" role="button" data-toggle="modal">
                     <div class="col-sm">
-                        <img src="{{anime.img}}" alt="{{anime.name}}">
+                        <img src="{{anime.img}}" alt="{{anime.name}}"></a>
                         {{anime.name}}
+                        <!--triggering modal window -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                                <!--Modal content  -->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                                        <h4 class="modal-title">Details</h4>
+                                        
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <p>ID: {{anime.id}}</p>
+                                    <p>Name: {{anime.name}}</p>
+                                    <p>Genre: {{anime.genre}}</p>
+                                    <p>Type: {{anime.type}}</p>
+                                    <p>Episodes: {{anime.episodes}}</p>
+                                    <p>Rating: {{anime.rating}}</p>
+                                    <p>Members: {{anime.members}}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 {% endfor %}
             </div>

@@ -8,8 +8,7 @@ from bs4 import BeautifulSoup
 import csv
 
 
-def findAnimePic(animeID,animeName):
-    animeName = animeName.encode('ascii', 'ignore').decode('ascii')
+def findAnimePic(animeID):
     link = "https://myanimelist.net/anime/" + str(animeID)
     
     try:
@@ -22,8 +21,6 @@ def findAnimePic(animeID,animeName):
                 if "ac" in link.get("class"):
                     img = link.get("src")
                     return link.get("src")
-            else:
-                return None
     except:
         return None
 
@@ -43,8 +40,8 @@ with open('../catalog_animecatalog2.csv', newline='') as animeFile:
             pass
         else:
             try:
-                if str(row[7]) is 'NULL':
-                    animeFile = AnimeCatalog.objects.get_or_create(anime_id = row[0], name = row[1].replace('&#039;', ''), genre = row[2], typeanime = row[3], episodes = row[4], rating = row[5], members = row[6], anime_url = findAnimePic(row[0], row[1]))
+                if row[0] not in ids:
+                    animeFile = AnimeCatalog.objects.get_or_create(anime_id = row[0], name = row[1].replace('&#039;', ''), genre = row[2], typeanime = row[3], episodes = row[4], rating = row[5], members = row[6], anime_url = findAnimePic(row[0]))
                     # progress+= piece
                     count += 1
                     print ('Counter: ', count, row, "\n")

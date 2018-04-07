@@ -153,6 +153,11 @@ modalFooter{
     float: right;
 }
 
+.modal-footer,.modal-body,.modal-title{
+  background-color: white;
+  color: black;
+}
+
 .animate {
     animation: zoom 0.6s
 }
@@ -234,3 +239,4 @@ modalFooter{
 .show > .btn-primary.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem, #6e6037d3;
 }
+

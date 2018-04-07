@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
-from .forms import AnimeCatalogForm
+from django.views.generic import View
+from .forms import AnimeCatalogForm, LoginForm
 from .models import AnimeCatalog
 from .WebScraping import findAnimePic
+from django.contrib.auth import authenticate, login
 import csv
 
 # Create your views here.
@@ -63,3 +65,36 @@ class form(View):
             'form' : animeCatForm
         })
         #return HttpRespons)e("Will save a new anime to the list in the database.")
+
+
+class login(View):
+    loginForm = LoginForm
+
+    def get(self, request):
+        form = self.loginForm(None)
+        return render(request, 'home/home.html', {'form': form})
+
+    def post(self, request):
+        form = self.loginForm(request.POST)
+
+        if form.is_valid():
+
+            user = form.save(commit=False)
+
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user.set_password(password)
+            user.save()
+
+            #login
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('home/home.html')
+
+        return render(request, 'home/home.html', {'form': form})
+
+

@@ -9,8 +9,13 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
-    temp = []
+    tempName = []
     tempID = []
+    tempGenre = []
+    tempType = []
+    tempEpisodes= []
+    tempRating = []
+    tempMembers = []
     pics = []
     fiveNames = []
     names = []
@@ -18,13 +23,19 @@ def home(request):
     new = AnimeCatalog.objects.values()
 
     for line in new: 
-        temp.append(line['name'].replace('&#039;', ''))
+        tempName.append(line['name'].replace('&#039;', ''))
+        tempID.append(line['anime_id'])
+        tempGenre.append(line['genre'])
+        tempType.append(line['typeanime'])
+        tempEpisodes.append(line['episodes'])
+        tempRating.append(line['rating'])
+        tempMembers.append(line['members'])
         pics.append(line['anime_url'])
 
-    for x in range(0, 15, 5):
+    for x in range(0, 100, 5):
         for y in range (5):
-            if not(x+y >= len(temp)):
-                fiveNames.append({'name':temp[x+y],'img':pics[x+y]})
+            if not(x+y >= len(tempName)):
+                fiveNames.append({'name':tempName[x+y],'img':pics[x+y],'id':tempID[x+y],'genre':tempGenre[x+y],'type':tempType[x+y],'episodes':tempEpisodes[x+y],'rating':tempRating[x+y],'members':tempMembers[x+y]})
         names.append(fiveNames)
         fiveNames = []
     # items = {'names': names, 'imgs': pics}

@@ -23,7 +23,7 @@ def home(request):
     new = AnimeCatalog.objects.values()
 
     for line in new: 
-        tempName.append(line['name'].replace('&#039;', ''))
+        tempName.append(line['name'].replace('&#039;', '').replace('&amp;','&'))
         tempID.append(line['anime_id'])
         tempGenre.append(line['genre'])
         tempType.append(line['typeanime'])
@@ -32,14 +32,20 @@ def home(request):
         tempMembers.append(line['members'])
         pics.append(line['anime_url'])
 
-    for x in range(0, 100, 5):
+    for x in range(0, len(tempName), 5):
         for y in range (5):
             if not(x+y >= len(tempName)):
                 fiveNames.append({'name':tempName[x+y],'img':pics[x+y],'id':tempID[x+y],'genre':tempGenre[x+y],'type':tempType[x+y],'episodes':tempEpisodes[x+y],'rating':tempRating[x+y],'members':tempMembers[x+y]})
         names.append(fiveNames)
         fiveNames = []
     # items = {'names': names, 'imgs': pics}
-    html = render(request, 'home/home.html', {'names':names})
+    animelist = names
+    paginator = Paginator(animelist,20)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
+    #html = render(request, 'home/home.html', {'names':names})
+    html = render(request, 'home/home.html', {'posts':posts})
     return html
 
 class login(View):

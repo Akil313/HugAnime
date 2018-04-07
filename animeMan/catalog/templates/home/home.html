@@ -12,7 +12,7 @@
     <title>HugAnime</title>
 </head>
 <body>
-    
+
     <!-- Sign In Button Modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalWindow">Sign In</button>
 
@@ -134,10 +134,36 @@
             </div>
         </div>
     </div>
+    
+    {% if posts.has_previous %}
+        
+        <a href="?page={{ posts.previous_page_number }}"><</a>
 
-    {% for rowNames in names %}
+    {% endif %}
+
+    {% for num in posts.paginator.page_range %}
+
+        {% if posts.number  == num %}
+
+            <strong>{{ num }}</strong>
+
+        {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+
+        {{ num }}
+
+        {% endif %}
+
+    {% endfor %}
+
+    {% if posts.has_next %}
+
+        <a href="?page={{ posts.next_page_number }}">></a>
+
+    {% endif %}
+
+    {% for rowNames in posts %}
         <div class="container-fluid">
-              <div class="row"> 
+            <div class="row"> 
                 {% for anime in rowNames %}
                 <a href="#myModal" role="button" data-toggle="modal">
                     <div class="col-sm">

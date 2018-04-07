@@ -25,9 +25,9 @@ def findAnimePic(animeID):
         return None
 
 
-with open('../anime.csv', newline='') as animeFile:
+with open('../catalog_animecatalog2.csv', newline='') as animeFile:
     read = csv.reader(animeFile)
-    # count = 0
+    count = 0
     # piece = (1/12294)*100
     # progress = 0'
     ids = []
@@ -36,15 +36,17 @@ with open('../anime.csv', newline='') as animeFile:
         ids.append(data['anime_id'])
 
     for row in read:
-        if 'anime_id' in row[0] or row[0] == '':
+        if 'anime_id' in row[0] == '':
             pass
         else:
             try:
                 if row[0] not in ids:
                     animeFile = AnimeCatalog.objects.get_or_create(anime_id = row[0], name = row[1].replace('&#039;', ''), genre = row[2], typeanime = row[3], episodes = row[4], rating = row[5], members = row[6], anime_url = findAnimePic(row[0]))
                     # progress+= piece
-                    # count += 1
-                    # print ('Counter: ', count, 'Percentage: ', round(progress, 2), "%\n", row, "\n")
-                    print (row)
+                    count += 1
+                    print ('Counter: ', count, row, "\n")
+                    # print (row)
+                else:
+                    animeFile = AnimeCatalog.objects.get_or_create(anime_id = row[0], name = row[1].replace('&#039;', ''), genre = row[2], typeanime = row[3], episodes = row[4], rating = row[5], members = row[6], anime_url = row[7])
             except:
                 animeFile = AnimeCatalog.objects.get_or_create(anime_id = row[0], name = row[1].replace('&#039;', ''), genre = row[2], typeanime = row[3], episodes = row[4], rating = row[5], members = row[6], anime_url = None)

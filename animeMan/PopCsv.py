@@ -43,8 +43,8 @@ with open('../catalog_animecatalog2.csv', newline='') as animeFile:
                 if row[0] not in ids:
                     animeFile = AnimeCatalog.objects.get_or_create(anime_id = row[0], name = row[1].replace('&#039;', ''), genre = row[2], typeanime = row[3], episodes = row[4], rating = row[5], members = row[6], anime_url = findAnimePic(row[0]))
                     # progress+= piece
-                    count += 1
-                    print ('Counter: ', count, row, "\n")
+                    #count += 1
+                    #print ('Counter: ', count, row, "\n")
                     # print (row)
                 else:
                     animeFile = AnimeCatalog.objects.get_or_create(anime_id = row[0], name = row[1].replace('&#039;', ''), genre = row[2], typeanime = row[3], episodes = row[4], rating = row[5], members = row[6], anime_url = row[7])

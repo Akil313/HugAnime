@@ -8,8 +8,7 @@ from bs4 import BeautifulSoup
 import csv
 
 
-def findAnimePic(animeID,animeName):
-    animeName = animeName.encode('ascii', 'ignore').decode('ascii')
+def findAnimePic(animeID):
     link = "https://myanimelist.net/anime/" + str(animeID)
     
     try:
@@ -18,12 +17,10 @@ def findAnimePic(animeID,animeName):
 
         all_img = soup.find_all("img")
         for link in all_img:
-            if link.get("alt") != None:
-                if animeName in link.get("alt"):
+            if link.get("class") != None:
+                if "ac" in link.get("class"):
                     img = link.get("src")
                     return link.get("src")
-            else:
-                return None
     except:
         return None
 
@@ -44,7 +41,7 @@ with open('../anime.csv', newline='') as animeFile:
         else:
             try:
                 if row[0] not in ids:
-                    animeFile = AnimeCatalog.objects.get_or_create(anime_id = row[0], name = row[1].replace('&#039;', ''), genre = row[2], typeanime = row[3], episodes = row[4], rating = row[5], members = row[6], anime_url = findAnimePic(row[0], row[1]))
+                    animeFile = AnimeCatalog.objects.get_or_create(anime_id = row[0], name = row[1].replace('&#039;', ''), genre = row[2], typeanime = row[3], episodes = row[4], rating = row[5], members = row[6], anime_url = findAnimePic(row[0]))
                     # progress+= piece
                     # count += 1
                     # print ('Counter: ', count, 'Percentage: ', round(progress, 2), "%\n", row, "\n")

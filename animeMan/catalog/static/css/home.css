@@ -240,3 +240,22 @@ modalFooter{
     box-shadow: 0 0 0 0.2rem, #6e6037d3;
 }
 
+.pageclass{
+  font-size: 35px;
+  text-align: center;
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  padding: 20px;
+}
+
+strong{
+  font-size: 40px;
+}
+
+a{
+  color: pink;
+}
+
+a:hover{
+  color: hotpink;
+}

@@ -135,31 +135,34 @@
         </div>
     </div>
     
-    {% if posts.has_previous %}
+    <div class ="pageclass">
+            {% if posts.has_previous %}
+    
+                <a href="?page={{ posts.previous_page_number }}"><</a>
         
-        <a href="?page={{ posts.previous_page_number }}"><</a>
-
-    {% endif %}
-
-    {% for num in posts.paginator.page_range %}
-
-        {% if posts.number  == num %}
-
-            <strong>{{ num }}</strong>
-
-        {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
-
-        {{ num }}
-
-        {% endif %}
-
-    {% endfor %}
-
-    {% if posts.has_next %}
-
-        <a href="?page={{ posts.next_page_number }}">></a>
-
-    {% endif %}
+            {% endif %}
+        
+            {% for num in posts.paginator.page_range %}
+        
+                {% if posts.number  == num %}
+        
+                    <strong>{{ num }}</strong>
+        
+                {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+        
+                <a href="?page={{ num }}">{{ num }}</a>
+        
+                {% endif %}
+        
+            {% endfor %}
+        
+            {% if posts.has_next %}
+        
+                <a href="?page={{ posts.next_page_number }}">></a>
+        
+            {% endif %}
+    </div>
+    
 
     {% for rowNames in posts %}
         <div class="container-fluid">
@@ -201,6 +204,35 @@
             </div>
         </div>
     {% endfor %}
+
+
+    <div class ="pageclass">
+            {% if posts.has_previous %}
+    
+                <a href="?page={{ posts.previous_page_number }}"><</a>
+        
+            {% endif %}
+        
+            {% for num in posts.paginator.page_range %}
+        
+                {% if posts.number  == num %}
+        
+                    <strong>{{ num }}</strong>
+        
+                {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+        
+                <a href="?page={{ num }}">{{ num }}</a>
+        
+                {% endif %}
+        
+            {% endfor %}
+        
+            {% if posts.has_next %}
+        
+                <a href="?page={{ posts.next_page_number }}">></a>
+        
+            {% endif %}
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

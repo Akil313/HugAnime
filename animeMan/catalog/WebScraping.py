@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
        
 def findAnimePic(animeID,animeName):
     animeName = animeName.encode('ascii', 'ignore').decode('ascii')
-    link = "https://myanimelist.net/anime/" + str(animeID) + "/" + animeName.replace(" ","_").replace(":","_").replace(".","_").replace("!","_").replace("/","_")
+    link = "https://myanimelist.net/anime/" + str(animeID)
     page = urlopen(link)
     soup = BeautifulSoup(page, "html.parser")
 
@@ -14,3 +14,4 @@ def findAnimePic(animeID,animeName):
                 img = link.get("src")
                 return link.get("src")
 
+print (findAnimePic('1', 'Cowboy Bebop'))

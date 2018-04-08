@@ -7,36 +7,49 @@ from .models import AnimeCatalog
 from .WebScraping import findAnimePic
 from django.contrib.auth import authenticate, login, get_user_model, logout
 import csv
+#from 
+from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
-    with open('../anime.csv', 'r') as aFile:
-        csvReader = csv.DictReader(aFile)
-        temp = []
-        tempID = []
-        pics = []
+    tempName = []
+    tempID = []
+    tempGenre = []
+    tempType = []
+    tempEpisodes= []
+    tempRating = []
+    tempMembers = []
+    pics = []
+    fiveNames = []
+    names = []
+
+    new = AnimeCatalog.objects.values()
+
+    for line in new: 
+        tempName.append(line['name'].replace('&#039;', '').replace('&amp;','&'))
+        tempID.append(line['anime_id'])
+        tempGenre.append(line['genre'])
+        tempType.append(line['typeanime'])
+        tempEpisodes.append(line['episodes'])
+        tempRating.append(line['rating'])
+        tempMembers.append(line['members'])
+        pics.append(line['anime_url'])
+
+    for x in range(0, len(tempName), 5):
+        for y in range (5):
+            if not(x+y >= len(tempName)):
+                fiveNames.append({'name':tempName[x+y],'img':pics[x+y],'id':tempID[x+y],'genre':tempGenre[x+y],'type':tempType[x+y],'episodes':tempEpisodes[x+y],'rating':tempRating[x+y],'members':tempMembers[x+y]})
+        names.append(fiveNames)
         fiveNames = []
-        names = []
+    # items = {'names': names, 'imgs': pics}
+    animelist = names
+    paginator = Paginator(animelist,20)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
 
-        for line in csvReader:
-            temp.append(line['name'].replace('&#039;', ''))
-            tempID.append(line['anime_id'])
-
-        for x in range(0,5):
-            pics.append(findAnimePic(tempID[x],temp[x]))
-
-        for x in range(0, len(temp), 5):
-            for y in range (5):
-                if not(x+y >= len(temp)):
-                    fiveNames.append({'name':temp[x+y],'img':pics[y]})
-            names.append(fiveNames)
-            fiveNames = []
-        #items = {'names': names, 'imgs': pics}
-        html = render(request, 'home/home.html', {'names':names})
+    #html = render(request, 'home/home.html', {'names':names})
+    html = render(request, 'home/home.html', {'posts':posts})
     return html
-
-# def login(request):
-#     return render(request, 'login/authentication.html')
 
 class form(View):
     def get(self, request):
@@ -58,7 +71,7 @@ class form(View):
                 anime.episodes =  animeCatForm.cleaned_data['episodes']
                 anime.rating =  animeCatForm.cleaned_data['rating']
                 anime.members =  animeCatForm.cleaned_data['members']
-                anime.anime_cover =  animeCatForm.cleaned_data['anime_cover']
+                anime.anime_url =  animeCatForm.cleaned_data['anime_url']
                 animeCatForm.save()
                 return HttpResponseRedirect("/?openr=cat&res=true")
         return render(request, 'catalogs/add.html', {

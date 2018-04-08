@@ -11,11 +11,11 @@ from django.db.models import (
 # Create your models here.
 
 class AnimeCatalog(models.Model):
-    anime_id = UUIDField(primary_key = True, default=uuid.uuid4, editable=False)
-    name = CharField(max_length=300)
-    genre = CharField(max_length=300)
-    typeanime = CharField(max_length = 10)
-    episodes = IntegerField(default=0)
-    rating = DecimalField(max_digits = 4, decimal_places = 2, null = True)
-    members = IntegerField()
-    anime_cover = ImageField(blank = True, null = True, upload_to = "img/animeCover", verbose_name = "Profile Photo")
+    anime_id = CharField(primary_key = True, max_length=100)
+    name = CharField(max_length=300, default = '')
+    genre = CharField(max_length=300, default = '')
+    typeanime = CharField(max_length = 10, default = '')
+    episodes = CharField(max_length=300, default = '')
+    rating = CharField(max_length=300, default = '')
+    members = CharField(max_length=300, default = '')
+    anime_url = CharField(max_length=300, default= None, blank = True, null = True)

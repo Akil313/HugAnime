@@ -3,12 +3,11 @@ body{
     color: white;
 }
 
-.container{
-    border: 1px solid red;
+button{
+  position: sticky;
 }
 
-
-.col-md{
+.col-sm{
     text-align: center;
 }
 
@@ -154,6 +153,11 @@ modalFooter{
     float: right;
 }
 
+.modal-footer,.modal-body,.modal-title{
+  background-color: white;
+  color: black;
+}
+
 .animate {
     animation: zoom 0.6s
 }
@@ -234,4 +238,24 @@ modalFooter{
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem, #6e6037d3;
+}
+
+.pageclass{
+  font-size: 35px;
+  text-align: center;
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  padding: 20px;
+}
+
+strong{
+  font-size: 40px;
+}
+
+a{
+  color: pink;
+}
+
+a:hover{
+  color: hotpink;
 }

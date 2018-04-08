@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% load staticfiles %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Add Anime Records</title>
+    <link rel="stylesheet" href="{% static 'css/add.css' %}">
 </head>
 <body>
+    <div id="form">
     <h1>New Anime</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+       <p id="button"> <button type="submit" class="save btn btn-default">Save</button></p>
+    </form></div>
 </body>
 </html>

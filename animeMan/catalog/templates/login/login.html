@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     {% load staticfiles %}
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <title>Assignment 3 Authentication</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
-    <title>HugAnime</title>
 </head>
+
 <body>
 
     <!-- Sign In Button Modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalWindow">Sign In</button>
 
-    <!-- Register Button Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalWindowRegister">Register</button>
-    
-    <img class= 'img-responsive' src ="{% static 'headerImg/hugAnime.png' %}" alt= "header image" style="width:500px; height: 500px">
-
     <div class="container">
-        <div class="modal fade animate" id="modalWindow" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modalContent">
             
+        <div class="centered">
             <div class="row">
                 <div class="col-sm-2">
 
@@ -48,7 +42,9 @@
             </div>
 
             <div class="modal-body">
-                <form>
+                <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
                     <div class="form-group">
                         <label class="modalLightFont" >Email address</label>
                         <input type="email" class="form-control" id="emailInput" placeholder="Enter email">
@@ -71,11 +67,15 @@
                     Don't have an account? <a class= "linkFont" href="#"> Register Here</a>
                 </div>
             </div>
-
-            </div>
-            </div>
         </div>
+
+
     </div>
+
+
+    <!-- Register Button Modal -->
+<!-- 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalWindowRegister">Register</button>
 
     <div class="container">
         <div class="modal fade animate" id="modalWindowRegister" tabindex="-1" role="dialog">
@@ -90,7 +90,7 @@
                     <div class="modal-header">
                             <div class="imgcontainer">
                             <h4 class="modalLightFont" style="text-align:center">Create an account</h4>
-                            <img src="{% static 'img/hugAnimeLogoYellow.png' %}" class="modalLogo">
+                            <img src="hugAnimeLogoYellow.png" class="modalLogo">
                             </div>
                     </div>
                 </div>
@@ -132,110 +132,13 @@
 
             </div>
             </div>
-        </div>
-    </div>
-    
-    <div class ="pageclass">
-            {% if posts.has_previous %}
-    
-                <a href="?page={{ posts.previous_page_number }}"><</a>
-        
-            {% endif %}
-        
-            {% for num in posts.paginator.page_range %}
-        
-                {% if posts.number  == num %}
-        
-                    <strong>{{ num }}</strong>
-        
-                {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
-        
-                <a href="?page={{ num }}">{{ num }}</a>
-        
-                {% endif %}
-        
-            {% endfor %}
-        
-            {% if posts.has_next %}
-        
-                <a href="?page={{ posts.next_page_number }}">></a>
-        
-            {% endif %}
-    </div>
-    
-
-    {% for rowNames in posts %}
-        <div class="container-fluid">
-            <div class="row"> 
-                {% for anime in rowNames %}
-                <a href="#{{anime.id}}" role="button" data-toggle="modal" data-animeid="{{anime.id}}" data-animename="{{anime.name}}" data-animegenre="{{anime.genre}}" data-animetype="{{anime.type}}" data-animeepisodes="{{anime.episodes}}" data-animerating="{{anime.rating}}" data-animemembers="{{anime.members}}" >
-                    <div class="col-sm">
-                        <img src="{{anime.img}}" alt="{{anime.name}}"></a>
-                        {{anime.name}}
-                        <!--triggering modal window -->
-                        <div class="modal fade" id="{{anime.id}}" role="dialog">
-                            <div class="modal-dialog">
-                                <!--Modal content  -->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-                                        <h4 class="modal-title">Details</h4>
-                                        
-                                    </div>
-                                </div>
-                                <div class="modal-body">
-                                    <img src="{{anime.img}}" alt="{{anime.name}}">
-                                    <p>ID: {{anime.id}}</p>
-                                    <p>Name: {{anime.name}}</p>
-                                    <p>Genre: {{anime.genre}}</p>
-                                    <p>Type: {{anime.type}}</p>
-                                    <p>Episodes: {{anime.episodes}}</p>
-                                    <p>Rating: {{anime.rating}}</p>
-                                    <p>Members: {{anime.members}}</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    {% endfor %}
-
-
-    <div class ="pageclass">
-            {% if posts.has_previous %}
-    
-                <a href="?page={{ posts.previous_page_number }}"><</a>
-        
-            {% endif %}
-        
-            {% for num in posts.paginator.page_range %}
-        
-                {% if posts.number  == num %}
-        
-                    <strong>{{ num }}</strong>
-        
-                {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
-        
-                <a href="?page={{ num }}">{{ num }}</a>
-        
-                {% endif %}
-        
-            {% endfor %}
-        
-            {% if posts.has_next %}
-        
-                <a href="?page={{ posts.next_page_number }}">></a>
-        
-            {% endif %}
-    </div>
+        </div> 
+    </div>-->
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
+
 </html>

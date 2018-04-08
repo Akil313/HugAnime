@@ -1,0 +1,29 @@
+body{
+    background: url(../img/large2.gif);
+    background-size: cover;
+}
+h1{
+    text-align: center;
+}
+
+#form{
+    height:470px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.889);
+    margin: 0 auto;
+    border-radius: 13px;
+}
+
+p{
+    text-align: center;
+}
+
+#button{
+    text-align:center;
+}
+
+.btn-default:hover{
+    color:white;
+    background-color: rgb(2, 46, 170);
+    border-radius: 5px;
+}

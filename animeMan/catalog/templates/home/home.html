@@ -165,12 +165,12 @@
         <div class="container-fluid">
             <div class="row"> 
                 {% for anime in rowNames %}
-                <a href="#myModal" role="button" data-toggle="modal">
+                <a href="#{{anime.id}}" role="button" data-toggle="modal" data-animeid="{{anime.id}}" data-animename="{{anime.name}}" data-animegenre="{{anime.genre}}" data-animetype="{{anime.type}}" data-animeepisodes="{{anime.episodes}}" data-animerating="{{anime.rating}}" data-animemembers="{{anime.members}}" >
                     <div class="col-sm">
                         <img src="{{anime.img}}" alt="{{anime.name}}"></a>
                         {{anime.name}}
                         <!--triggering modal window -->
-                        <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal fade" id="{{anime.id}}" role="dialog">
                             <div class="modal-dialog">
                                 <!--Modal content  -->
                                 <div class="modal-content">
@@ -181,6 +181,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-body">
+                                    <img src="{{anime.img}}" alt="{{anime.name}}">
                                     <p>ID: {{anime.id}}</p>
                                     <p>Name: {{anime.name}}</p>
                                     <p>Genre: {{anime.genre}}</p>

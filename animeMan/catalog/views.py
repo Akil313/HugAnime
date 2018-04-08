@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
-from .forms import AnimeCatalogForm
+from django.views.generic import View
+from .forms import AnimeCatalogForm, LoginForm
 from .models import AnimeCatalog
 from .WebScraping import findAnimePic
+from django.contrib.auth import authenticate, login, get_user_model, logout
 import csv
 
 # Create your views here.
@@ -33,8 +35,8 @@ def home(request):
         html = render(request, 'home/home.html', {'names':names})
     return html
 
-def login(request):
-    return render(request, 'login/authentication.html')
+# def login(request):
+#     return render(request, 'login/authentication.html')
 
 class form(View):
     def get(self, request):
@@ -63,3 +65,55 @@ class form(View):
             'form' : animeCatForm
         })
         #return HttpRespons)e("Will save a new anime to the list in the database.")
+
+
+# class loginView(View):
+#     loginForm = LoginForm
+
+#     def get(self, request):
+#         form = self.loginForm(None)
+#         return render(request, 'login/register.html', {'form': form})
+
+#     def post(self, request):
+#         form = self.loginForm(request.POST)
+
+#         if form.is_valid():
+
+#             user = form.save(commit=False)
+
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+
+#             user.set_password(password)
+#             user.save()
+
+#             #login
+#             user = authenticate(username=username, password=password)
+
+#             if user is not None:
+#                 if user.is_active:
+#                     login(request, user)
+#                     return redirect('home/home.html')
+
+#         return render(request, 'register/register.html', {'form': form})
+
+def login_view(request):
+    #print request.user.is_authenticated()
+    form = LoginForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        # print request.user.is_authenticated()
+
+    return render(request, "login/login.html", {"form": form})
+
+def register_view(request):
+    return render(request, "login.html", {})
+
+def logout_view(request):
+    logout(request)
+    return render(request, "login.html", {})
+
+

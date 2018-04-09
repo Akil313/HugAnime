@@ -12,7 +12,8 @@
     <div id="form">
     <h1>New Anime</h1>
     <form method="post">
-        {% csrf_token %}
+        <!-- Creates a csrf token to ensure that posted data is saved correctly and renders the form-->
+        {% csrf_token %} 
         {{ form.as_p }}
        <p id="button"> <button type="submit" class="save btn btn-default">Save</button></p>
     </form></div>

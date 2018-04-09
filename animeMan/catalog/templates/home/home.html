@@ -136,19 +136,20 @@
     </div>
     
     <div class ="pageclass">
-            {% if posts.has_previous %}
+            {% if posts.has_previous %} <!-->if the current page has a previous page then print a hyperlink to that page -->
+
     
                 <a href="?page={{ posts.previous_page_number }}"><</a>
         
             {% endif %}
         
-            {% for num in posts.paginator.page_range %}
+            {% for num in posts.paginator.page_range %} <!-->if the page to be printed is the current page then make it bold  -->
         
                 {% if posts.number  == num %}
         
                     <strong>{{ num }}</strong>
         
-                {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+                {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %} <!-->if the page to be printed is between 2 away from it and it exists then print a hyperlink for it -->
         
                 <a href="?page={{ num }}">{{ num }}</a>
         
@@ -156,20 +157,22 @@
         
             {% endfor %}
         
-            {% if posts.has_next %}
+            {% if posts.has_next %} <!-->if the current page has a next page then print a hyperlink to it -->
         
                 <a href="?page={{ posts.next_page_number }}">></a>
         
             {% endif %}
     </div>
     
-
+    <!--For each entry within posts, which is rendered from the views.py -->
     {% for rowNames in posts %}
         <div class="container-fluid">
             <div class="row"> 
+                <!--For each anime within the list of 5 anime-->
                 {% for anime in rowNames %}
                 <a href="#{{anime.id}}" role="button" data-toggle="modal" data-animeid="{{anime.id}}" data-animename="{{anime.name}}" data-animegenre="{{anime.genre}}" data-animetype="{{anime.type}}" data-animeepisodes="{{anime.episodes}}" data-animerating="{{anime.rating}}" data-animemembers="{{anime.members}}" >
                     <div class="col-sm">
+                        <!--The anime's poster image is displayed, and their name -->
                         <img src="{{anime.img}}" alt="{{anime.name}}"></a>
                         {{anime.name}}
                         <!--triggering modal window -->
@@ -184,6 +187,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-body">
+                                    <!-- Creates the modal window and posts the information about the anime in it -->
                                     <img src="{{anime.img}}" alt="{{anime.name}}">
                                     <p>ID: {{anime.id}}</p>
                                     <p>Name: {{anime.name}}</p>

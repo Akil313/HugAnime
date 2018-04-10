@@ -130,12 +130,13 @@ def login_view(request):
         login(request, user)
 
         # print (request.user.is_authenticated())
+    return render(request, "login/login.html", {})
 
 ''' renders the login.html webpage when logging in'''
 def register_view(request):
-    return render(request, "login.html", {})
+    return render(request, "login/login.html", {})
 
 ''' renders the login.html webpage when logging out'''
 def logout_view(request):
     logout(request)
-    return render(request, "login.html", {})
+    return render(request, "login/login.html", {})

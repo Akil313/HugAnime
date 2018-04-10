@@ -4,7 +4,6 @@ from django.views import View
 from django.views.generic import View
 from .forms import AnimeCatalogForm, LoginForm
 from .models import AnimeCatalog
-from .WebScraping import findAnimePic
 from django.contrib.auth import authenticate, login, get_user_model, logout
 import csv
 #from 
@@ -80,53 +79,30 @@ class form(View):
         #return HttpRespons)e("Will save a new anime to the list in the database.")
 
 
-# class loginView(View):
-#     loginForm = LoginForm
-
-#     def get(self, request):
-#         form = self.loginForm(None)
-#         return render(request, 'login/register.html', {'form': form})
-
-#     def post(self, request):
-#         form = self.loginForm(request.POST)
-
-#         if form.is_valid():
-
-#             user = form.save(commit=False)
-
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-
-#             user.set_password(password)
-#             user.save()
-
-#             #login
-#             user = authenticate(username=username, password=password)
-
-#             if user is not None:
-#                 if user.is_active:
-#                     login(request, user)
-#                     return redirect('home/home.html')
-
-#         return render(request, 'register/register.html', {'form': form})
-
+#Login view 
 def login_view(request):
-    #print request.user.is_authenticated()
+    #Prints true or false in terminal depending on if login was successful
+    #print (request.user.is_authenticated())
+
     form = LoginForm(request.POST or None)
     if form.is_valid():
+        #ensures data is changed to universal format
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
+
+        #ensures user exists
         user = authenticate(username=username, password=password)
+        
+        #login the user
         login(request, user)
-        # print request.user.is_authenticated()
+
+        # print (request.user.is_authenticated())
 
     return render(request, "login/login.html", {"form": form})
 
-def register_view(request):
-    return render(request, "login.html", {})
-
+#Logout view
 def logout_view(request):
     logout(request)
-    return render(request, "login.html", {})
+    return render(request, "login/login.html", {})
 
 

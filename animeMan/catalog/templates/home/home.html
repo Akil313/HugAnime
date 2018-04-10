@@ -136,20 +136,20 @@
     </div>
     
     <div class ="pageclass">
-            {% if posts.has_previous %} <!-->if the current page has a previous page then print a hyperlink to that page -->
+            {% if posts.has_previous %} <!--if the current page has a previous page then print a hyperlink to that page -->
 
     
                 <a href="?page={{ posts.previous_page_number }}"><</a>
         
             {% endif %}
         
-            {% for num in posts.paginator.page_range %} <!-->if the page to be printed is the current page then make it bold  -->
+            {% for num in posts.paginator.page_range %} <!--if the page to be printed is the current page then make it bold  -->
         
                 {% if posts.number  == num %}
         
                     <strong>{{ num }}</strong>
         
-                {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %} <!-->if the page to be printed is between 2 away from it and it exists then print a hyperlink for it -->
+                {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %} <!--if the page to be printed is between 2 away from it and it exists then print a hyperlink for it -->
         
                 <a href="?page={{ num }}">{{ num }}</a>
         
@@ -157,7 +157,7 @@
         
             {% endfor %}
         
-            {% if posts.has_next %} <!-->if the current page has a next page then print a hyperlink to it -->
+            {% if posts.has_next %} <!--if the current page has a next page then print a hyperlink to it -->
         
                 <a href="?page={{ posts.next_page_number }}">></a>
         
